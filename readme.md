@@ -70,7 +70,7 @@ HW02
 **2. 實驗步驟**
 ---
 1. 設計觀察程式如下，將 1、2、3 移置 r1、r2、r3 以利後續觀察，以 r1、r2、r3 push 至 stack 在 pop 至 r4、r5、r6，改變 `push {r1, r2, r3}` 及 `pop {r4, r5, r6}` 順序觀察，共分三組做實驗。
-```assembly=1
+```assembly
 .syntax unified
 
 .word 0x20000100
@@ -120,7 +120,7 @@ sleep:
 ```
 2. 以 qemu 模擬 gdb 觀察
 1.第一組
-    ```assembly=16
+    ```assembly
     push	{r1, r2, r3}
     pop		{r4, r5, r6}
     ```
@@ -132,7 +132,7 @@ push 後，並觀察 stack 的順序，stack 從頂部 0x20000100 開始往下�
 pop 至 r4, r5, r6，可觀察到 stack 從底部 0x200000f4 依序 pop 至 r4, r5, r6。
 ![](https://github.com/vwxyzjimmy/ESEmbedded_HW02/blob/master/lab2_jpg/3.JPG)
     2. 第二組， push 內的順序與第一組相反
-    ```assembly=25
+    ```assembly
     push	{r3, r2, r1}
 	pop		{r4, r5, r6}
     ```
@@ -145,7 +145,7 @@ pop 至 r4, r5, r6，可觀察到 stack 從底部 0x200000f4 依序 pop 至 r4, 
     ![](https://github.com/vwxyzjimmy/ESEmbedded_HW02/blob/master/lab2_jpg/6.JPG)
     與第一組之結果相同，程式內 push 內的順序不影響實際 push 的順序
     3. 第三組， pop 內的順序與第一組相反
-    ```assembly=32
+    ```assembly
         push	{r1, r2, r3}
         pop		{r6, r5, r4}
     ```
